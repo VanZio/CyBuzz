@@ -1,205 +1,99 @@
-import React, { useState } from "react";
-import axios from "axios";
-import {
-  Box,
-  CircularProgress,
-  CircularProgressLabel,
-  Flex,
-  Input,
-  VStack,
-  Text,
-  Code,
-  Stack,
-} from "@chakra-ui/react";
+// Arvan Talaska
+// 103952502
+// Homepage
+
+import React from "react";
+import "./App.css";
+import Navbar from "../src/components/Navbar";
+import Footer from "./components/Footer";
+import { Link } from "react-router-dom";
 
 function App() {
-  const [, setfileURL] = useState("");
-  const [selectedFile, setselectedFile] = useState(null);
-  const [uploadedFile, setuploadedFile] = useState({});
-  const [isUploading, setisUploading] = useState(false);
-  const [isFileUploaded, setisFileUploaded] = useState(false);
-  const [uploadProgress, setuploadProgress] = useState(0);
-  const [uploadFailed, setUploadFailed] = useState(false);
-
-  let uploadInput = React.createRef();
-
-  // Track selected file before the upload
-  const handleSelectFile = (e) => {
-    const selectedFileList = [];
-    for (let i = 0; i < e.target.files.length; i++) {
-      selectedFileList.push(e.target.files.item(i));
-    }
-    setselectedFile(selectedFileList);
-  };
-  
-// Upload file to server
-const handleUploadFile = async (ev) => {
-  ev.preventDefault();
-
-  // Clear previous error or success messages
-  setisFileUploaded(false);
-  setUploadFailed(false);
-
-  setisUploading(true);
-  const data = new FormData();
-  // Append the file to the request body
-  for (let i = 0; i < uploadInput.files.length; i++) {
-    data.append("file", uploadInput.files[i], uploadInput.files[i].name);
-  }
-
-  try {
-    const config = {
-      onUploadProgress: (progressEvent) => {
-        const { loaded, total } = progressEvent;
-        setuploadProgress(Math.round((loaded / total) * 100));
-      },
-    };
-    const response = await axios.post(
-      "http://localhost:5000/upload",
-      data,
-      config
-    );
-    const body = response.data;
-    console.log(body);
-    setfileURL(`http://localhost:5000/${body.filename}`);
-    if (response.status === 200) {
-      setisFileUploaded(true); // Flag to show the uploaded file
-      setisUploading(false);
-      setuploadedFile(selectedFile); // Set the uploaded file to show the name
-    } else {
-      setUploadFailed(true); // Set upload failure flag
-      setisUploading(false);
-    }
-  } catch (error) {
-    console.error(error);
-    setUploadFailed(true); // Set upload failure flag
-    setisUploading(false);
-  }
-};
-
   return (
-    <Flex
-      align="center"
-      direction="column"
-      px={20}
-      bg={"#9DD2F2"}
-      minH={"100vh"}
-    >
-      <Stack
-        spacing={4}
-        align="center"
-        bg={"#F2F2F2"}
-        p={20}
-        my={20}
-        borderRadius={20}
-        minH={"90vh"}
-      >
-        <Box w={500} textAlign="center" px={10}>
-          <h1>React-Flask File Upload</h1>
-          <Text fontWeight="bold" color="gray.700">
-            This is a simple file upload app, upload your files and you can see
-            the saved files in the <Code>backend/app/Downloads</Code> folder.
-          </Text>
-        </Box>
-        {/* Upload file form */}
-        <form onSubmit={handleUploadFile}>
-          <Flex justify="center" align="center" direction="column">
-            <label
-              htmlFor="file"
-              style={{
-                cursor: "pointer",
-                padding: 10,
-                marginBottom: 20,
-                border: "1px solid #000",
-                borderRadius: 10,
-                background: "#698DAF",
-                color: "white",
-              }}
-            >
-              Select file(s) to upload
-              <Input
-                id="file"
-                type="file"
-                multiple
-                ref={(ref) => {
-                  uploadInput = ref;
-                }}
-                onChange={handleSelectFile}
-                style={{ display: "none" }}
-              />
-            </label>
-            <VStack bg="azure" p={30} borderRadius={20}>
-              <Text fontWeight="bold">Selected file(s)</Text>
-              <Flex pb={20} direction="column">
-                {selectedFile &&
-                  selectedFile.map((item, index) => {
-                    return (
-                      <Text key={index}>
-                        <b>{index + 1}. </b>
-                        {item.name}
-                      </Text>
-                    );
-                  })}
-              </Flex>
-              <Box
-                as="button"
-                type="submit"
-                disabled={selectedFile ? false : true}
-                p={15}
-                textAlign="center"
-                fontWeight={600}
-                border="1px solid #000"
-                borderRadius={10}
-                bg={"#698DAF"}
-                color={"white"}
-                cursor="pointer"
-              >
-                Upload
-              </Box>
-            </VStack>
-          </Flex>
-        </form>
-        {/* Show the upload progress */}
-        {isUploading && (
-          <>
-            <CircularProgress value={uploadProgress} thickness="12px">
-              <CircularProgressLabel>{uploadProgress}%</CircularProgressLabel>
-            </CircularProgress>
-          </>
-        )}
-        {/* Show the success message and file names after upload */}
-        {isFileUploaded &&(
-          <>
-            <Flex justify="center" align="center" direction="column">
-              <Box p={10} textAlign="center" color={"green"}>
-                <h3>File(s) uploaded successfully</h3>
-              </Box>
-            </Flex>
-            <VStack bg="azure" p={30} borderRadius={20}>
-              <Text fontWeight="bold">Uploaded file(s)</Text>
-              <Flex pb={20} direction="column">
-                {uploadedFile &&
-                  uploadedFile.map((item, index) => {
-                    return (
-                      <Text key={index}>
-                        <b>{index + 1}. </b>
-                        {item.name}
-                      </Text>
-                    );
-                  })}
-              </Flex>
-            </VStack>
-          </>
-        )}
-        {/* Show failed message */}
-        {uploadFailed && (
-          <Box p={10} textAlign="center" color={"red"}>
-            <h3>Failed to upload file(s)(Only .sol files allowed)</h3>
-          </Box>
-        )}
-      </Stack>
-    </Flex>
+    <div className="home">
+      <Navbar></Navbar> {/* Navigation bar Component */}
+      <header className="banner">
+        <div className="banner-content">
+          {" "}
+          {/* Homepage banner and styling */}
+          <h1>Verify Smart Contracts with Confidence</h1>
+          <p>
+            Ensure the security and integrity of your blockchain smart
+            contracts.
+          </p>
+          <Link to="/upload">
+            <button className="home-button">Get Started</button>
+          </Link>
+        </div>
+      </header>
+      <section className="features">
+        {" "}
+        {/* adding features of the website within grids using MUI */}
+        <div item xs={4}>
+          <div className="feature">
+            <h2>Transparent Analysis</h2>
+            <p>
+              Gain insights into the inner workings of your smart contracts
+              through detailed analysis reports.
+            </p>
+          </div>
+        </div>
+        <div item xs={4}>
+          <div className="feature">
+            <h2>Security Audits</h2>
+            <p>
+              Identify vulnerabilities and potential risks in your smart
+              contracts with thorough security audits.
+            </p>
+          </div>
+        </div>
+        <div item xs={4}>
+          <div className="feature">
+            <h2>User-Friendly Interface</h2>
+            <p>
+              Our platform offers an intuitive interface for easy interaction
+              and understanding of your contract's code.
+            </p>
+          </div>
+        </div>
+      </section>
+      <Footer></Footer> {/* Footer component */}
+    </div>
   );
 }
 
 export default App;
+// import React, { useState } from "react";
+
+// function App() {
+//   const [response, setResponse] = useState(null);
+
+//   const handleTestRequest = async () => {
+//     try {
+//       const response = await fetch("http://localhost:8000/test/", {
+//         method: "POST",
+//       });
+
+//       if (response.ok) {
+//         const data = await response.json();
+//         setResponse(data);
+//       } else {
+//         setResponse({ error: "Request failed" });
+//       }
+//     } catch (error) {
+//       setResponse({ error: "An error occurred" });
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <button onClick={handleTestRequest}>Make Test Request</button>
+//       <div>
+//         <h2>Response:</h2>
+//         <pre>{JSON.stringify(response, null, 2)}</pre>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default App;

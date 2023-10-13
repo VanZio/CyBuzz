@@ -1,0 +1,88 @@
+#cont { /*flex box to space containers evenly*/
+    margin-top: 1em;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#info li {
+    margin: 1em;
+    margin-left: 0px;
+}
+
+#audit {
+    width: 60%;
+}
+
+#audit h2{
+    float:left;
+}
+
+#info { /*Styles for user info */ 
+    width: 25%;
+    background-color: black;
+    color: white;
+    padding-left: 2em;
+    padding-right: 2em;
+    border-radius: 15px;
+    padding-bottom: 1.5em;
+}
+
+#info ul {
+    list-style: none;
+    padding: 0px;
+}
+
+#audit-cont { /*Make table scrollable */
+    clear: both;
+    overflow-y:auto;
+    height: 363px; /*allow 5 cells to be readable*/
+}
+
+#audit-cont thead th {
+    position: sticky; /*Name, Date, Results remain at the top of the table (stuck)*/
+    top: 0px;
+}
+
+
+.audit-table{
+    text-align: left;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+span {
+    float:right;
+    margin-right: 2em;
+}
+.audit-table td, .audit-table th{
+    padding: 1em;
+}
+
+.audit-table td{
+    width:32.5%;
+}
+
+.audit-table th{
+    background: black;
+    color: white;
+}
+
+.audit-table tr {
+    border-style: solid;
+}
+
+#account h1 {
+    margin-left: 1.6em;
+    margin-top: 2em;
+}
+
+#audit h2, #info h2{
+    font-size: 1.5em;
+}
+
+.search {
+    float:right;
+    width: 20%;
+}
+

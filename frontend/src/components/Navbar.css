@@ -1,0 +1,112 @@
+/* Navigation bar styling */
+.navbar {
+  font-family: "Poppins";
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.logo a {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: white;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links li {
+  margin: 0 10px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+}
+
+.nav-links a:hover {
+  color: #007bff;
+}
+
+.nav-button {
+  background-color: #007bff;
+  border-radius: 50px;
+  padding: 7px 15px;
+  margin: 0 10px;
+  color: white;
+  text-decoration: none;
+  float: left;
+}
+
+.nav-button:hover {
+  background-color: #0056b3;
+}
+
+.menu-icon {
+  display: none;
+  cursor: pointer;
+}
+
+.menu-icon span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: white;
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-toggle {
+  opacity: 0;
+}
+.menu-toggle:checked + .menu-icon span:first-child {
+  transform: rotate(180deg) translate(2px, 2px);
+  background-color: #007bff;
+}
+
+.menu-toggle:checked + .menu-icon span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle:checked + .menu-icon span:last-child {
+  transform: rotate(-180deg) translate(2px, -2px);
+}
+
+@media screen and (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background-color: #333;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .menu-toggle:checked ~ .nav-links {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-links li {
+    margin: 10px 20px;
+  }
+
+}

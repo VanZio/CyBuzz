@@ -1,0 +1,136 @@
+/* Thao Linh Nguyen 
+103843952
+Payment page CSS */
+
+.payment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: url("../images/payment-background.jpg");
+  background-size: cover;
+  background-position: center;
+  color: #fbf7ea;
+}
+
+.h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  text-align: center;
+  margin-left: 0;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+.para {
+  margin: 0 auto;
+  text-align: center;
+  width: 50%;
+}
+.table-button {
+  padding: 10%;
+  color: white;
+}
+.buttons-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center; /* Center align the buttons horizontally */
+  margin-top: 20px; /* Add some spacing above the buttons */
+}
+
+.button {
+  padding: 20px 30px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bolder;
+  margin-top: 5%;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.learn-more-button {
+  background-color: #5b7188;
+}
+
+.get-started-button {
+}
+.plan-price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #1f1e1c;
+  color: white;
+  text-align: center;
+}
+.payment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: url("../images/payment-background.jpg");
+  background-size: cover;
+  background-position: center;
+  color: #fbf7ea;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #1f1e1c;
+  color: white;
+  text-align: center;
+  padding: 5%;
+}
+
+.payment-table {
+  margin: 0;
+  width: 100%;
+  border-style: none;
+  border-collapse: separate;
+  /* border: 1px solid #ccc; */
+  table-layout: fixed;
+}
+
+.payment-table th,
+.payment-table td {
+  padding: 2%;
+  /* border: 1px solid #ccc; */
+  text-align: center;
+  width: 25%;
+  background-color: none;
+  border-collapse: collapse;
+}
+
+.payment-table th {
+  font-size: 150%;
+}
+
+.payment-table td {
+  font-size: 90%;
+}
+.table-button {
+  padding: 5%;
+}
+
+.selected {
+  color: #1f1e1c;
+  background-color: #a8cce1;
+}
+.th {
+  background-color: #1f1e1c;
+}
