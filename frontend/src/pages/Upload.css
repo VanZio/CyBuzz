@@ -1,0 +1,93 @@
+/* Arvan Talaska
+103952502 */
+
+.upload-container {
+  display: flex;
+  flex-direction: column; /* Change the direction to column */
+  width: 100%; /* Make the container take up the full width */
+  padding: 20px; /* Adjust padding for mobile view */
+  background-color: #1f1e1c;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #fbf7ea;
+}
+
+.form-container {
+  padding-right: 20px;
+  margin-bottom: 200px;
+}
+
+.form-group {
+  padding: 10px;
+  padding-right: 20px;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* Desktop view */
+@media screen and (min-width: 768px) {
+  .dropbox-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    position: relative; /* To position the drag and drop area within the container */
+  }
+
+  .upload-container {
+    flex-direction: row; /* Reset direction for larger screens */
+    width: 800px;
+    margin: auto;
+    padding: 40px;
+    margin-top: 5%;
+  }
+
+  .drag-drop-area {
+    border: 2px dashed gray;
+    background-color: white;
+    padding: 20px;
+    text-align: left;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.7;
+    cursor: pointer;
+  }
+}
+/* Mobile view */
+@media screen and (max-width: 767px) {
+  .drag-drop-area {
+    display: none; /* Hide the drag and drop area in mobile view */
+  }
+}
+.progress-bar {
+  width: 100%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  color: #007bff;
+}
+.response {
+  text-align: center;
+}
