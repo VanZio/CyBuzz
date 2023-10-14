@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "./Upload.css";
@@ -35,7 +34,7 @@ function Upload() {
     for (let i = 0; i < uploadInput.files.length; i++) {
       data.append("file", uploadInput.files[i], uploadInput.files[i].name);
     }
-    data.append("contractName", contractName); // Adding contract name to the FormData
+    data.append("contractName", contractName);
 
     try {
       const config = {
