@@ -59,12 +59,3 @@ class Database:
         self.commit()
         self.close()
 
-
-def main():
-    database1 = Database("feenix-mariadb.swin.edu.au", "s103989568", "170803", "s103989568_db")
-    database1.createtable()
-
-
-
-if __name__ == '__main__':
-    main()
