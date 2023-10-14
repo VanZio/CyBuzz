@@ -10,9 +10,8 @@ class NewFileHandler(FileSystemEventHandler):
             print(f'New file created: {event.src_path}')
             if event.src_path.startswith(downloads_dir):
                 run_slither_script()
-                run_database_script()
             elif event.src_path.startswith(results_dir):
-                run_results_script()
+                run_database_script()
 
 def run_slither_script():
     slither_script_path = os.path.join(downloads_dir, 'slitherprocess.py')
@@ -23,20 +22,12 @@ def run_slither_script():
         print(f"Error running the scripts: {str(e)}")
         
 def run_database_script():
-    database_script_path = os.path.join(os.path.dirname(__file__), 'database.py')
+    database_script_path = os.path.join(os.path.dirname(__file__), 'run.py')
     try:
         # Run the database script
         subprocess.call(['python', database_script_path])
     except Exception as e:
         print(f"Error running the scripts: {str(e)}")
-
-def run_results_script():
-    insert_script_path = os.path.join(os.path.dirname(__file__), 'insert.py')
-    try:
-        # Run the insert script
-        subprocess.call(['python', insert_script_path])
-    except Exception as e:
-        print(f"Error running the results script: {str(e)}")
 
 if __name__ == '__main__':
     # Define the paths to your "Downloads" and "Results" directories
