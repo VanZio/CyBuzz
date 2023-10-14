@@ -1,17 +1,6 @@
 import re
 import mysql.connector
 from datetime import datetime
-from app import app
-from flask import request
-
-@app.route('/upload', methods=['POST', 'GET'])
-def data(request):
-    file_name = None
-    contract_name = None
-    if request.method == 'POST':
-            file_name = request.files.getlist('file')
-            contract_name = request.form.get('contractName')
-    return file_name, contract_name
 
 
 class intoDatabase:
@@ -116,15 +105,3 @@ class intoDatabase:
         self.commit()
         self.close()
 
-
-
-def main():
-    file_name, contract_name = data(request)
-    insert = intoDatabase("feenix-mariadb.swin.edu.au", "s103989568", "170803", "s103989568_db")
-    insert.openfile(file_name)
-    insert.insertrep(contract_name)
-    insert.insertvul()
-    insert.insertrepvul()
-
-if __name__ == '__main__':
-    main()
