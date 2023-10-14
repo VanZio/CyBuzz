@@ -10,7 +10,7 @@ class NewFileHandler(FileSystemEventHandler):
             print(f'New file created: {event.src_path}')
             if event.src_path.startswith(downloads_dir):
                 run_slither_script()
-            elif event.src_path.startswith(results_dir):
+            if event.src_path.startswith(results_dir):
                 run_database_script()
 
 def run_slither_script():

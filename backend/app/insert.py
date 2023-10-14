@@ -32,7 +32,7 @@ class intoDatabase:
         desc = []
         found = False
 
-        with open(file_name, "r") as file: ##will be replaced with filename from upload page using variable
+        with open(file_name, "r") as file: #will be replaced with filename from upload page using variable
             length = len(file.readlines())
             file.seek(0,0)
             for line in file:   

@@ -1,16 +1,28 @@
 import insert
 import database
+from flask import Flask, request
+
+app = Flask(__name__)
 
 def main():
-    database1 = database.Database("feenix-mariadb.swin.edu.au", "s103989568", "170803", "s103989568_db")
-    database1.createtable()   
+    db_config = {
+        "host": "feenix-mariadb.swin.edu.au",
+        "user": "s103989568",
+        "password": "170803",
+        "database": "s103989568_db",
+    }
 
-    insert1 = insert.intoDatabase("feenix-mariadb.swin.edu.au", "s103989568", "170803", "s103989568_db")
-    insert1.openfile(r"backend\app\Downloads\results\Smart_result.md")
-    insert1.insertrep("ContractA")
-    insert1.insertvul()
-    insert1.insertrepvul()   
+    try:
+        database1 = database.Database(**db_config)
+        database1.createtable()
 
+        insert1 = insert.intoDatabase(**db_config)
+        insert1.openfile(f"backend/app/Downloads/results/{filename}")
+        insert1.insertrep(contractName)
+        insert1.insertvul()
+        insert1.insertrepvul()
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 if __name__ == '__main__':
     main()
