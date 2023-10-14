@@ -15,7 +15,7 @@ class intoDatabase:
 
     def connect(self):
         self.conn = mysql.connector.connect(**self.db_config)
-        self.cursor = self.conn.cursor()
+        self.cursor = self.conn.cursor(buffered=True)
     
 
     def commit(self):

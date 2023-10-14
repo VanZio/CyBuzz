@@ -1,24 +1,34 @@
 import insert
 import database
-from flask import Flask, request
+import os
 
-app = Flask(__name__)
 
 def main():
-    db_config = {
-        "host": "feenix-mariadb.swin.edu.au",
-        "user": "s103989568",
-        "password": "170803",
-        "database": "s103989568_db",
-    }
+    path = "backend/app/Downloads/results"
+    filerecent = None
+    timerecent = 0
+    for entry in os.scandir(path):
+        if entry.is_file():
+            # get the modification time of the file using entry.stat().st_mtime_ns
+            mod_time = entry.stat().st_mtime_ns
+            if mod_time > timerecent:
+                # update the most recent file and its modification time
+                filerecent = entry.name
+                timerecent = mod_time
+
+    with open('backend/app/contract_name.txt', 'r') as f:
+        lines = f.readlines()
+        contract_name = lines[-1]
+
 
     try:
-        database1 = database.Database(**db_config)
+        database1 = database.Database("feenix-mariadb.swin.edu.au", "s103989568", "170803", "s103989568_db")
         database1.createtable()
 
-        insert1 = insert.intoDatabase(**db_config)
-        insert1.openfile(f"backend/app/Downloads/results/{filename}")
-        insert1.insertrep(contractName)
+        insert1 = insert.intoDatabase("feenix-mariadb.swin.edu.au", "s103989568", "170803", "s103989568_db")
+        insert1.openfile(f"backend/app/Downloads/results/{filerecent}")
+        print(filerecent)
+        insert1.insertrep(contract_name)
         insert1.insertvul()
         insert1.insertrepvul()
     except Exception as e:

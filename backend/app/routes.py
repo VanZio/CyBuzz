@@ -21,7 +21,7 @@ def file_upload():
 
     if request.method == 'POST' or 'GET':
         contractName = request.form['contractName'] 
-        with open('contract_name.txt', 'a') as f:
+        with open('app/contract_name.txt', 'a') as f:
             f.write("\n" + contractName)
         if 'file' not in request.files:
             return jsonify({'message': 'No file provided'}, 400)
