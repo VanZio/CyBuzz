@@ -15,3 +15,7 @@ REM Navigate to the frontend directory and start the React server
 cd ..\..\frontend
 start "React Application" cmd /k npm start
 
+REM turn on server.js
+cd src\pages
+start "Server" cmd /k node server.js
+

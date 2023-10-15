@@ -3,6 +3,7 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "./Upload.css";
+import { Link } from "react-router-dom";
 
 function Upload() {
   // State variables to manage form input and upload status
@@ -79,21 +80,21 @@ function Upload() {
                 required
               />
             </div>
-            {uploadError && <div className="error">{uploadError}</div>}
+            {uploadError && <div className="response">{uploadError}</div>}
             <button type="submit">Upload</button>
             {uploadProgress > 0 && (
-              <progress value={uploadProgress} max="100">
+              <progress value={uploadProgress} max="100" className="progress-bar">
                 {uploadProgress}%
               </progress>
             )}
             {uploadStatus === "success" && (
               <div className="response">
                 <h3>Smart Contract uploaded successfully</h3>
-                <h4>Smart Contract will be analyzed and displayed in results page</h4>
+                <h4>Smart Contract will be analyzed and displayed in <Link to="/Result">results page</Link></h4>
               </div>
             )}
             {uploadStatus === "failed" && (
-              <div className="error">
+              <div className="response">
                 <h3>Failed to upload file (Only .sol files allowed)</h3>
               </div>
             )}

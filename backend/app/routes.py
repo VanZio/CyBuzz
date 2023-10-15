@@ -1,5 +1,5 @@
 from app import app
-from flask import jsonify, request, Flask
+from flask import jsonify, request, abort
 from werkzeug.utils import secure_filename
 import os
 
@@ -24,19 +24,16 @@ def file_upload():
         with open('app/contract_name.txt', 'a') as f:
             f.write("\n" + contractName)
         if 'file' not in request.files:
-            return jsonify({'message': 'No file provided'}, 400)
-
+            abort(400, 'No file provided')
         file = request.files['file']
-            
         if file.filename == '':
-            return jsonify({'message': 'No selected file'}, 400)
-
+            abort(400, 'No file provided')
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)  # Update filename
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             return jsonify({"filename": filename, "contractName": contractName, "status": "success"})
         else:
-            return jsonify({'message': 'File type allowed only .sol'}, 400)
+            abort(400, 'File type allowed only .sol')
         
 if __name__ == '__main__':
     app.run(debug=False)
