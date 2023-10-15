@@ -4,7 +4,7 @@ import os
 
 
 def main():
-    path = "backend/app/Downloads/results"
+    path = "Downloads/results"
     filerecent = None
     timerecent = 0
     for entry in os.scandir(path):
@@ -16,7 +16,7 @@ def main():
                 filerecent = entry.name
                 timerecent = mod_time
 
-    with open('backend/app/contract_name.txt', 'r') as f:
+    with open('contract_name.txt', 'r') as f:
         lines = f.readlines()
         contract_name = lines[-1]
 
@@ -26,7 +26,7 @@ def main():
         database1.createtable()
 
         insert1 = insert.intoDatabase("feenix-mariadb.swin.edu.au", "s103989568", "170803", "s103989568_db")
-        insert1.openfile(f"backend/app/Downloads/results/{filerecent}")
+        insert1.openfile(f"Downloads/results/{filerecent}")
         print(filerecent)
         insert1.insertrep(contract_name)
         insert1.insertvul()
