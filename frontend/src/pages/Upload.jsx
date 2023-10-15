@@ -1,3 +1,7 @@
+// Arvan Talaska
+// 103952502
+// upload page
+
 import React, { useState } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
@@ -40,7 +44,7 @@ function Upload() {
           setUploadProgress(progress);
         },
       });
-
+      //error checking
       if (response.status === 200) {
         setUploadStatus("success");
       } else {
@@ -66,7 +70,7 @@ function Upload() {
                 id="file"
                 type="file"
                 accept=".sol"
-                onChange={handleFileChange}
+                onChange={handleFileChange} //update file
                 required
               />
             </div>
@@ -76,17 +80,17 @@ function Upload() {
                 type="text"
                 id="contractName"
                 value={contractName}
-                onChange={(e) => setContractName(e.target.value)}
+                onChange={(e) => setContractName(e.target.value)} //update contract name
                 required
               />
             </div>
             {uploadError && <div className="response">{uploadError}</div>}
             <button type="submit">Upload</button>
             {uploadProgress > 0 && (
-              <progress value={uploadProgress} max="100" className="progress-bar">
+              <progress value={uploadProgress} max="100" className="progress-bar"> 
                 {uploadProgress}%
               </progress>
-            )}
+            )} 
             {uploadStatus === "success" && (
               <div className="response">
                 <h3>Smart Contract uploaded successfully</h3>

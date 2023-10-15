@@ -1,3 +1,7 @@
+# Arvan Talaska
+# 103952502
+# upload page
+
 from app import app
 from flask import jsonify, request, abort
 from werkzeug.utils import secure_filename
@@ -21,7 +25,7 @@ def file_upload():
 
     if request.method == 'POST' or 'GET':
         contractName = request.form['contractName'] 
-        with open('app/contract_name.txt', 'a') as f:
+        with open('app/contract_name.txt', 'a') as f: #write the contract name in a txt file so it is accessible 
             f.write("\n" + contractName)
         if 'file' not in request.files:
             abort(400, 'No file provided')
