@@ -10,14 +10,13 @@ import Table from "./Table";
 
 
 function Account() {
-    const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("");
+  const keys = ["name", "result", "date"];
 
-    const keys = ["name","result","date"];
-    
-    const search = (data)=> {
-      return data.filter
-      (item=>keys.some(key=>item[key].toLowerCase().includes(query)));
-    };
+  const search = (data) => {
+      return data.filter(item => keys.some(key => item[key].toLowerCase().includes(query)));
+  };
+
   return (
     <div id="account">
       <Navbar></Navbar>
@@ -27,11 +26,9 @@ function Account() {
 
           <div id="audit">
             <h2>Audit History</h2>
-            <input type="text" placeholder="Search..." className="search" 
-            onChange={(e) => setQuery(e.target.value)}/> {/* search for entered text */}
+            <input type="text" placeholder="Search..." className="search" onChange={(e) => setQuery(e.target.value)} />{/* search for entered text */}
             <div id="audit-cont">
               <Table data={search(Audits)} /> {/* Table created from array file (allows for search*/}
-
             </div>
           </div>
           
