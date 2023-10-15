@@ -7,6 +7,8 @@ import Footer from '../components/Footer';
 import './Account.css';
 import {Audits} from "./data";
 import Table from "./Table";
+import { Link } from "react-router-dom";
+
 
 
 function Account() {
@@ -40,6 +42,7 @@ function Account() {
               <li><strong>Email</strong><br/>**********@hotmail.com</li>
               <li><strong>Phone Number</strong><br/>*******893</li>
               <li><strong>Plan</strong><br/>Standard</li>
+              <li><strong><Link to="/Result">results</Link></strong><br/></li>
             </ul>
             <button type="submit">Edit Account Settings</button>
           </div>

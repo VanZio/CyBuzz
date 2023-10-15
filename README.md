@@ -1,4 +1,4 @@
-Before running run.bat ensure the following:
+Before running runWeb.bat ensure the following:
 
 Installed Watchdog
 Installed Flask

@@ -10,10 +10,10 @@ const Result = () => {
 
   useEffect(() => {
     // Fetch vulnerabilities from your API
-    fetch("http://localhost:3001/api/vulnerabilities")
+    fetch("http://localhost:3001/api/results")
       .then((response) => response.json())
-      .then((data) => {
-        setVulnerabilities(data);
+      .then((response) => {
+        setVulnerabilities(response);
       })
       .catch((error) => console.error(error));
 
