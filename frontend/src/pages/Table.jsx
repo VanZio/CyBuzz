@@ -6,7 +6,7 @@ const Table = () => {
 
     useEffect(() => {
         // Fetch data from your API using fetch
-        fetch('http://localhost:3001/api/reports')
+        fetch('http://localhost:5000/api/reports')
             .then(response => response.json())
             .then(result => {
                 setData(result);
@@ -31,7 +31,7 @@ const Table = () => {
                             <td>{item.report_id}</td>
                             <td>{item.contract_name}</td>
                             <td>{item.audit_date}</td>
-                            <td>{item.num_vulnerability} <span><Link to="/Result">More</Link></span> </td>
+                            <td>{item.num_vulnerability}</td>
                         </tr>
                     ))}
                 </tbody>
