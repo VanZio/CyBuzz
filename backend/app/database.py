@@ -42,7 +42,8 @@ class Database:
             CREATE TABLE IF NOT EXISTS Reports (
             report_id INT AUTO_INCREMENT PRIMARY KEY,
             contract_name VARCHAR(255) NOT NULL,
-            audit_date DATE NOT NULL
+            audit_date DATE NOT NULL,
+            num_vulnerability INT
             )
         """)
         self.commit()

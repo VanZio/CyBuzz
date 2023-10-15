@@ -54,8 +54,10 @@ class intoDatabase:
 
 
     def insertvul(self):
+        issue_num = 0
         self.connect()
         for match, desc in zip(self.matches, self.perissue):
+            issue_num += 1
             issue_name, results_count, severity = match
             descr = '\n'.join(desc)
             self.cursor.execute(
@@ -64,6 +66,7 @@ class intoDatabase:
             )
             self.commit()
         self.close()
+        self.num = issue_num
 
 
     def insertrep(self, report_name):
@@ -71,8 +74,8 @@ class intoDatabase:
         date = datetime.today().strftime('%Y-%m-%d')
         self.connect()
         self.cursor.execute(
-            """INSERT INTO Reports (contract_name, audit_date) VALUES (%s, %s)""" 
-            , (report_name, date)
+            """INSERT INTO Reports (contract_name, audit_date, num_vulnerability) VALUES (%s, %s, %s)""" 
+            , (report_name, date, self.num)
         )
         self.commit()
         self.close()
@@ -104,4 +107,5 @@ class intoDatabase:
             )
         self.commit()
         self.close()
+
 

@@ -28,8 +28,8 @@ def main():
         insert1 = insert.intoDatabase("feenix-mariadb.swin.edu.au", "s103989568", "170803", "s103989568_db")
         insert1.openfile(f"Downloads/results/{filerecent}")
         print(filerecent)
-        insert1.insertrep(contract_name)
         insert1.insertvul()
+        insert1.insertrep(contract_name)
         insert1.insertrepvul()
     except Exception as e:
         print(f"An error occurred: {e}")
