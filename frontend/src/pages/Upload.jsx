@@ -48,7 +48,7 @@ function Upload() {
       }
     } catch (error) {
       console.error(error);
-      setUploadError("Failed to upload the file. Please check the file type.");
+      setUploadStatus("failed");
     }
   }
 
@@ -101,7 +101,7 @@ function Upload() {
           </form>
         </div>
       </div>
-      <Footer />
+      <Footer/>
     </div>
   );
 }
